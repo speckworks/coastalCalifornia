@@ -46,3 +46,65 @@
   text-align: center;
   max-height: 54vh;
 }
+
+.glass-button {
+  display: inline-block;
+  padding: 24px 32px;
+  border: 0;
+  text-decoration: none;
+  border-radius: 15px;
+  background-color: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(30px);
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 15px;
+}
+
+
+.glass-panel {
+  color: #fff;
+  margin: 40px auto;
+  background-color: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+  max-width: 90vw;
+}
+
+.glass-button:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.slider-container {
+  max-width: 95vw;
+  margin: 0 auto;
+}
+
+@media (max-width: 700px){
+  .slider-container {
+    margin: 0 auto;
+    max-width: 60vw;
+  }
+}
+
+.slider-container .awssld__content > img {
+  object-fit: contain;
+}
+
+.awssld__content > img, .awssld__content > video {
+  background-color: #000000B3;
+}
+
+.awssld__content {
+  border-radius: 15px;
+}
+
+.awssld__wrapper .awssld__controls .awssld {
+  --organic-arrow-color: #fff;
+}
+
