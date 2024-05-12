@@ -7,11 +7,13 @@ import { Beach } from '../interfaces/Beach'
 interface CustomSliderProps extends AwesomeSliderProps {
   onPrev: () => void;
   onNext: () => void;
+  onSelect: (index: number) => void
 }
 
 const Carousel: React.FC = () => {
   const [images, setImages] = useState<string[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selected, setSelected] = useState(0);
 
 
   useEffect(() => {
@@ -21,6 +23,7 @@ const Carousel: React.FC = () => {
         // Extract the image URLs or paths from the fetched data
         const imageUrls = data.map((item) => item.Photo_1);
         const imageUrlsFiltered = imageUrls.filter((item) => item !== "");
+        console.log('imageUrlsFiltered', imageUrlsFiltered)
         // Update the images state with the extracted image URLs or paths
         setImages(imageUrlsFiltered);
       })
@@ -32,13 +35,22 @@ const Carousel: React.FC = () => {
   };
 
   const handleNext = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === images.length - 1 ? 0 : prevSlide + 1));
+    setCurrentSlide((prevSlide) => { 
+      console.log('prevSlide on handle next',prevSlide);
+      return (prevSlide === images.length - 1 ? 0 : prevSlide + 1)
+    });
   };
 
+  const handleSelect = (index: number) => {
+    setSelected(index);
+  };
 
   const sliderProps: CustomSliderProps = {
+    startupScreen: <div key={ currentSlide } />,
     onPrev: handlePrevious,
     onNext: handleNext,
+    selected: currentSlide,
+    onSelect: handleSelect,
     buttons: true,
   };
 
